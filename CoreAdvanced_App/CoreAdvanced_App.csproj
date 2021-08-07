@@ -13,12 +13,4 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.17" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\CoreAdvanced_App.Application\CoreAdvanced_App.Application.csproj" />
-    <ProjectReference Include="..\CoreAdvanced_App.Data.EF\CoreAdvanced_App.Data.EF.csproj" />
-    <ProjectReference Include="..\CoreAdvanced_App.Data\CoreAdvanced_App.Data.csproj" />
-    <ProjectReference Include="..\CoreAdvanced_App.Infrastructure\CoreAdvanced_App.Infrastructure.csproj" />
-    <ProjectReference Include="..\CoreAdvanced_App.Utilities\CoreAdvanced_App.Utilities.csproj" />
-  </ItemGroup>
-
 </Project>
