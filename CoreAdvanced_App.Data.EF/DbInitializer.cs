@@ -54,7 +54,8 @@ namespace CoreAdvanced_App.Data.EF
                     FullName = "Administrator",
                     Email = "admin@gmail.com",
                     Balance = 0,
-                }, "tthnhanit@");
+                    DateCreated = DateTime.Now
+                }, "nhan123@@A");
                 var user = await _userManager.FindByNameAsync("admin");
                 await _userManager.AddToRoleAsync(user, "Admin");
             }

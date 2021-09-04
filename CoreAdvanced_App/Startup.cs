@@ -2,7 +2,6 @@ using AutoMapper;
 using CoreAdvanced_App.Application.AutoMapper;
 using CoreAdvanced_App.Application.Implementation;
 using CoreAdvanced_App.Application.Interfaces;
-using CoreAdvanced_App.Data;
 using CoreAdvanced_App.Data.EF;
 using CoreAdvanced_App.Data.EF.Repositories;
 using CoreAdvanced_App.Data.Entities;
@@ -11,17 +10,12 @@ using CoreAdvanced_App.Infrastructure.Interfaces;
 using CoreAdvanced_App.Utilities.Constants;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.UI;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace CoreAdvanced_App
 {
@@ -41,14 +35,33 @@ namespace CoreAdvanced_App
                 options.UseSqlServer(Configuration.GetConnectionString(SystemConstants.MainConectionString),
                 _ => _.MigrationsAssembly("CoreAdvanced_App.Data.EF")));
 
+            services.AddIdentity<AppUser, AppRole>()
+                .AddEntityFrameworkStores<AppDbContext>()
+                .AddDefaultTokenProviders();
+
+            // Configure Identity
+            services.Configure<IdentityOptions>(options =>
+            {
+                // Password settings
+                options.Password.RequireDigit = true;
+                options.Password.RequiredLength = 6;
+                options.Password.RequireNonAlphanumeric = false;
+                options.Password.RequireUppercase = false;
+                options.Password.RequireLowercase = false;
+
+                // Lockout settings
+                options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(30);
+                options.Lockout.MaxFailedAccessAttempts = 10;
+
+                // User settings
+                options.User.RequireUniqueEmail = true;
+            });
+
+
             //Config Automapper
             services.AddAutoMapper(o => o.AddMaps(typeof(Startup).Assembly));
             services.AddSingleton<AutoMapper.IConfigurationProvider>(AutoMapperConfig.RegisterMapping());
             services.AddScoped<IMapper>(sp => new Mapper(sp.GetRequiredService<AutoMapper.IConfigurationProvider>(), sp.GetService));
-
-            services.AddIdentity<AppUser, AppRole>()
-                .AddEntityFrameworkStores<AppDbContext>()
-                .AddDefaultTokenProviders();
 
             //Config Repository and UnitOfWork
             services.AddTransient(typeof(IUnitOfWork), typeof(EFUnitOfWork));
@@ -72,7 +85,7 @@ namespace CoreAdvanced_App
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, DbInitializer dbInitializer)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
             {
@@ -100,7 +113,6 @@ namespace CoreAdvanced_App
                     pattern: "{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
             });
-            dbInitializer.Seed().Wait();
         }
     }
 }

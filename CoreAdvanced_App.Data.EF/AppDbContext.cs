@@ -56,11 +56,11 @@ namespace CoreAdvanced_App.Data.EF
         {
             #region Identity Config
 
-            builder.Entity<IdentityUserClaim<string>>().ToTable("AppUserClaims").HasKey(_ => _.Id);
-            builder.Entity<IdentityRoleClaim<string>>().ToTable("AppRoleClaims").HasKey(_ => _.Id);
-            builder.Entity<IdentityUserLogin<string>>().ToTable("AppUserLogins").HasKey(_ => _.UserId);
-            builder.Entity<IdentityUserRole<string>>().ToTable("AppUserRoles").HasKey(_ => new { _.RoleId, _.UserId });
-            builder.Entity<IdentityUserToken<string>>().ToTable("AppUserTokens").HasKey(_ => new { _.UserId });
+            builder.Entity<IdentityUserClaim<Guid>>().ToTable("AppUserClaims").HasKey(_ => _.Id);
+            builder.Entity<IdentityRoleClaim<Guid>>().ToTable("AppRoleClaims").HasKey(_ => _.Id);
+            builder.Entity<IdentityUserLogin<Guid>>().ToTable("AppUserLogins").HasKey(_ => _.UserId);
+            builder.Entity<IdentityUserRole<Guid>>().ToTable("AppUserRoles").HasKey(_ => new { _.RoleId, _.UserId });
+            builder.Entity<IdentityUserToken<Guid>>().ToTable("AppUserTokens").HasKey(_ => new { _.UserId });
 
             #endregion Identity Config
 
@@ -74,7 +74,7 @@ namespace CoreAdvanced_App.Data.EF
             builder.AddConfiguration(new ProductTagConfiguration());
             builder.AddConfiguration(new SystemConfigConfiguration());
 
-            base.OnModelCreating(builder);
+            //base.OnModelCreating(builder);
         }
 
         public override int SaveChanges()
