@@ -15,8 +15,4 @@
     <ProjectReference Include="..\CoreAdvanced_App.Utilities\CoreAdvanced_App.Utilities.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Repositories\" />
-  </ItemGroup>
-
 </Project>
