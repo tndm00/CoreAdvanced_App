@@ -156,3 +156,6 @@ System.InvalidOperationException: RenderBody has not been called for the page at
 2021-09-06T21:56:39.5165982+07:00 8000000c-0005-f000-b63f-84710c7967bb [WRN] Invalid password for user "7361311b-7fba-4b08-6310-08d96fa0bbe3". (c2dce6c7)
 2021-09-06T21:56:39.5185986+07:00 8000000c-0005-f000-b63f-84710c7967bb [WRN] User "7361311b-7fba-4b08-6310-08d96fa0bbe3" failed to provide the correct password. (ec8d2479)
 2021-09-06T21:56:47.4545779+07:00 80000059-0002-fc00-b63f-84710c7967bb [INF] User logged in. (fdce0db4)
+2021-09-06T22:13:30.9482059+07:00  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2021-09-06T22:13:30.9572408+07:00  [INF] Hosting environment: "Development" (c3307c92)
+2021-09-06T22:13:30.9573926+07:00  [INF] Content root path: "D:\THANH NHAN\CORE_ASP.NET\CoreAdvanced_App\CoreAdvanced_App" (b5d60022)
