@@ -6,6 +6,7 @@ using CoreAdvanced_App.Data.EF;
 using CoreAdvanced_App.Data.EF.Repositories;
 using CoreAdvanced_App.Data.Entities;
 using CoreAdvanced_App.Data.IRespositories;
+using CoreAdvanced_App.Helper;
 using CoreAdvanced_App.Infrastructure.Interfaces;
 using CoreAdvanced_App.Utilities.Constants;
 using Microsoft.AspNetCore.Builder;
@@ -74,12 +75,15 @@ namespace CoreAdvanced_App
 
             // config seed data
             services.AddTransient<DbInitializer>();
+            services.AddScoped<IUserClaimsPrincipalFactory<AppUser>, CustomClaimsPrincipalFactory>();
 
             //Config Repository
             services.AddTransient<IProductCategoryRepository, ProductCategoryRepository>();
+            services.AddTransient<IFunctionRepository, FunctionRepository>();
 
             //Config Service
             services.AddTransient<IProductCategoryService, ProductCategoryService>();
+            services.AddTransient<IFunctionService, FunctionService>();
 
             //Config Json
             services.AddMvc().AddJsonOptions(o =>

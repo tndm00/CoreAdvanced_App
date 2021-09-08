@@ -17,7 +17,7 @@
             }
         });
         $('#btnLogin').on('click', function (e) {
-            if (('#frmLogin').valid()) {
+            if ($('#frmLogin').valid()) {
                 e.preventDefault();
                 var userName = $('#txtUserName').val();
                 var passWord = $('#txtPassWord').val();
