@@ -30,6 +30,8 @@
 
     <!-- Custom Theme Style -->
     <link href="/lib/gentelella/build/css/custom.min.css" rel="stylesheet">
+    @RenderSection("Styles", required: false)
+
 </head>
 
 <body class="nav-md">
@@ -197,7 +199,9 @@
     <!-- NProgress -->
     <script src="/lib/gentelella/vendors/nprogress/nprogress.js"></script>
     <!-- Chart.js -->
+    <script src="~/lib/mustache/extras/mustache.js"></script>
     <script src="/lib/gentelella/vendors/Chart.js/dist/Chart.min.js"></script>
+    <script src="~/lib/twbs-pagination/jquery.twbsPagination.js"></script>
     <!-- gauge.js -->
     <script src="/lib/gentelella/vendors/gauge.js/dist/gauge.min.js"></script>
     <!-- bootstrap-progressbar -->
@@ -232,6 +236,6 @@
 
     <!-- Custom Theme Scripts -->
     <script src="/lib/gentelella/build/js/custom.min.js"></script>
-
+    @RenderSection("Scripts", required: false)
 </body>
 </html>

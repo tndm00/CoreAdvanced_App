@@ -29,6 +29,12 @@
   <ItemGroup>
     <Folder Include="Areas\Admin\Data\" />
     <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="wwwroot\lib\mustache\" />
+    <Folder Include="wwwroot\lib\twbs-pagination\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\client-side\images\no-user.png" />
   </ItemGroup>
 
 </Project>

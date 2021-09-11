@@ -361,8 +361,7 @@ namespace CoreAdvanced_App.Data.EF.Migrations
                 name: "SystemConfigs",
                 columns: table => new
                 {
-                    Id = table.Column<int>(maxLength: 255, nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Id = table.Column<string>(maxLength: 255, nullable: false),
                     Name = table.Column<string>(maxLength: 128, nullable: false),
                     Value1 = table.Column<string>(nullable: true),
                     Value2 = table.Column<string>(nullable: true),

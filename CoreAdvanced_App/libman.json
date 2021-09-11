@@ -57,6 +57,10 @@
     {
       "library": "popper.js@2.10.1",
       "destination": "wwwroot/lib/popper.js/"
+    },
+    {
+      "library": "mustache.js@4.2.0",
+      "destination": "wwwroot/lib/mustache.js/"
     }
   ]
 }

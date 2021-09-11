@@ -8,7 +8,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace CoreAdvanced_App.Data.Entities
 {
     [Table("SystemConfigs")]
-    public class SystemConfig : DomainEntity<int>
+    public class SystemConfig : DomainEntity<string>
     {
         [Required]
         [StringLength(128)]

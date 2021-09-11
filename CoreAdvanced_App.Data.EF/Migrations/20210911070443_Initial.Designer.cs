@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CoreAdvanced_App.Data.EF.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20210904120744_Initial")]
+    [Migration("20210911070443_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -939,11 +939,9 @@ namespace CoreAdvanced_App.Data.EF.Migrations
 
             modelBuilder.Entity("CoreAdvanced_App.Data.Entities.SystemConfig", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasMaxLength(255)
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(255)")
+                        .HasMaxLength(255);
 
                     b.Property<string>("Name")
                         .IsRequired()
