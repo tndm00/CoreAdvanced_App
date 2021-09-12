@@ -1,6 +1,7 @@
 ﻿var productController = function () {
     this.initialize = function () {
         loadData();
+        loadProductCategories();
         registerEvents();
     }
 
@@ -11,6 +12,35 @@
             coreApp.configs.pageIndex = 1;
             loadData(true);
         });
+
+        $('#btnSearch').on('click', function () {
+            loadData(false);
+        });
+
+        $('#txtSearch').on('keypress', function (e) {
+            if (e.which === 13) {
+                loadData(false);
+            }
+        });
+    }
+
+    function loadProductCategories() {
+        $.ajax({
+            type: 'GET',
+            url: '/admin/product/GetProductCategories',
+            dataType: 'json',
+            success: function (res) {
+                var render = "<option value=''>--Select category--</option>";
+                $.each(res, function (i, item) {
+                    render += "<option value='"+ item.Id +"'> "+ item.Name +" </option>"
+                });
+                $('#ddlCategories').html(render);
+            },
+            error: function (status) {
+                console.log('load data Product Category', status);
+                coreApp.notify("Cannot loading data Product Category", 'error');
+            }
+        });
     }
 
     function loadData(isPageChanged) {
@@ -19,8 +49,8 @@
         $.ajax({
             type: 'GET',
             data: {
-                categoryId: null,
-                keyword: $('#txtKeyword').val(),
+                categoryId: $('#ddlCategories').val(),
+                keyword: $('#txtSearch').val(),
                 page: coreApp.configs.pageIndex,
                 pageSize: coreApp.configs.pageSize
             },

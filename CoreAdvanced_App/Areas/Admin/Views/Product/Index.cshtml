@@ -1,5 +1,5 @@
 ﻿@section Scripts {
-    <script src="~/app/controllers/product/index.js"></script>
+    <script src="~/app/controllers/product/index.js" asp-append-version="true"></script>
     <script>
         var product = new productController();
         product.initialize();
@@ -12,13 +12,18 @@
     </div>
 
     <div class="title_right">
-        <div class="col-md-5 col-sm-5   form-group pull-right top_search">
+        <div class="col-md-5 col-sm-5 form-group pull-right   ">
             <div class="input-group">
-                <input type="text" class="form-control" placeholder="Search for...">
+                <input type="text" class="form-control" id="txtSearch" placeholder="Search for...">
                 <span class="input-group-btn">
-                    <button class="btn btn-default" type="button">Search!</button>
+                    <button class="btn btn-primary" id="btnSearch" type="button">Search!</button>
                 </span>
             </div>
+        </div>
+        <div class="col-md-3 col-sm-3 form-group pull-right">
+            <select class="form-control" id="ddlCategories">
+                <option>--Select category--</option>
+            </select>
         </div>
     </div>
 </div>

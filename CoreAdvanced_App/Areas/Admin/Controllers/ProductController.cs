@@ -10,9 +10,11 @@ namespace CoreAdvanced_App.Areas.Admin.Controllers
     public class ProductController : BaseController
     {
         private readonly IProductService _productService;
-        public ProductController(IProductService productService)
+        private readonly IProductCategoryService _productCategoryService;
+        public ProductController(IProductService productService, IProductCategoryService productCategoryService)
         {
             _productService = productService;
+            _productCategoryService = productCategoryService;
         }
 
         public IActionResult Index()
@@ -32,6 +34,12 @@ namespace CoreAdvanced_App.Areas.Admin.Controllers
         public IActionResult GetAllPaging(int? categoryId, string keyword, int page, int pageSize)
         {
             var model = _productService.GetAllPaing(categoryId, keyword, page, pageSize);
+            return new OkObjectResult(model);
+        }
+
+        public IActionResult GetProductCategories()
+        {
+            var model = _productCategoryService.GetAll();
             return new OkObjectResult(model);
         }
 
