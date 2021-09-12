@@ -19,7 +19,7 @@ namespace CoreAdvanced_App.Application.Interfaces
 
         ProductCategoryViewModel GetById(int id);
 
-        void UpdateParentId(int sourceId, int targetId, Dictionary<int, int> items);
+        void UpdateParentId(int sourceId, int targetId, int[] items);
 
         void ReOrder(int sourceId, int targetId);
 

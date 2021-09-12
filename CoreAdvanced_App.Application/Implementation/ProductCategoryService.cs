@@ -88,7 +88,25 @@ namespace CoreAdvanced_App.Application.Implementation
 
         public void ReOrder(int sourceId, int targetId)
         {
-            throw new NotImplementedException();
+            var source = _productCategoryRepository.FindById(sourceId);
+            var target = _productCategoryRepository.FindById(targetId);
+            int tempOrder = source.SortOrder;
+            source.SortOrder = target.SortOrder;
+            target.SortOrder = tempOrder;
+
+            //Update parentId
+            var parentTarget = _productCategoryRepository.FindById(targetId);
+            if(parentTarget.ParentId != null)
+            {
+                source.ParentId = parentTarget.ParentId;
+            }
+            else
+            {
+                source.ParentId = null;
+            }
+
+            _productCategoryRepository.Update(source);
+            _productCategoryRepository.Update(target);
         }
 
         public void Save()
@@ -101,9 +119,21 @@ namespace CoreAdvanced_App.Application.Implementation
             throw new NotImplementedException();
         }
 
-        public void UpdateParentId(int sourceId, int targetId, Dictionary<int, int> items)
+        public void UpdateParentId(int sourceId, int targetId, int[] items)
         {
-            throw new NotImplementedException();
+            var sourceCategory = _productCategoryRepository.FindById(sourceId);
+            sourceCategory.ParentId = targetId;
+            _productCategoryRepository.Update(sourceCategory);
+
+            //Get all sibling
+            int index = 0;
+            var sibling = _productCategoryRepository.FindAll(x => items.Contains(x.Id));
+            foreach (var child in sibling)
+            {
+                child.SortOrder = items[index];
+                _productCategoryRepository.Update(child);
+                index++;
+            }
         }
     }
 }
