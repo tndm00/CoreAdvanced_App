@@ -1,15 +1,15 @@
-﻿@{ 
+﻿@{
     ViewData["Title"] = "Index";
 }
 
-@section Styles{ 
+@section Styles{
     <link href="~/lib/jquery-easyui/themes/bootstrap/easyui.css" rel="stylesheet" />
     <link href="~/lib/jquery-easyui/themes/icon.css" rel="stylesheet" />
 }
 
-@section Scripts{ 
+@section Scripts{
     <script src="~/lib/jquery-easyui/jquery.easyui.min.js"></script>
-    <script src="~/app/controllers/product-category/index.js"></script>
+    <script src="~/app/controllers/product-category/index.js" asp-append-version="true"></script>
     <script>
         var productCategory = new productCategoryController();
         productCategory.initalize();
@@ -44,10 +44,12 @@
 
             <div class="x_content">
                 <ul id="treeProductCategpry"></ul>
+                <div id="contextMenu" class="easyui-menu" style="width:120px;">
+                    <div id="btnEdit" data-options="iconCls:'icon-edit'">Sửa</div>
+                    <div id="btnDelete" data-options="iconCls:'icon-remove'">Xoá</div>
+                </div>
             </div>
         </div>
     </div>
 </div>
-
-
-
+@await Html.PartialAsync("Partial/_AddEditModal.cshtml")
