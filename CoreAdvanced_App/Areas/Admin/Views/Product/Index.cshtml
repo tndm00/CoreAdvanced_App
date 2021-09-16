@@ -1,4 +1,14 @@
-﻿@section Scripts {
+﻿@{
+    ViewData["Title"] = "Index";
+}
+
+@section Styles{
+    <link href="~/lib/jQuery-EasyUI/themes/bootstrap/easyui.css" rel="stylesheet" />
+    <link href="~/lib/jQuery-EasyUI/themes/icon.css" rel="stylesheet" />
+}
+
+@section Scripts {
+    <script src="~/lib/jQuery-EasyUI/jquery.easyui.min.js"></script>
     <script src="~/app/controllers/product/index.js" asp-append-version="true"></script>
     <script>
         var product = new productController();
@@ -24,6 +34,9 @@
             <select class="form-control" id="ddlCategories">
                 <option>--Select category--</option>
             </select>
+        </div>
+        <div class="col-md-2 col-sm-12  form-group pull-right">
+            <button id="btnCreate" class="btn btn-success">Create</button>
         </div>
     </div>
 </div>
@@ -88,14 +101,16 @@
         </div>
     </div>
 </div>
+@await Html.PartialAsync("Partial/_AddEditModal.cshtml")
+
 <script id="table-template" type="x-tmpl-mustache">
     <tr class="even pointer">
         <td class="a-center ">
             <input type="checkbox" class="flat" name="table_records">
         </td>
         <td>
-            <button class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></button>
-            <button class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></button>
+            <button class="btn btn-default btn-sm btn-edit" data-id="{{Id}}"><i class="fa fa-pencil"></i></button>
+            <button class="btn btn-danger btn-sm btn-delete" data-id="{{Id}}"><i class="fa fa-trash"></i></button>
         </td>
         <td>{{Name}}</td>
         <td>{{CategoryName}} </td>

@@ -81,6 +81,8 @@ namespace CoreAdvanced_App
             services.AddTransient<IProductCategoryRepository, ProductCategoryRepository>();
             services.AddTransient<IFunctionRepository, FunctionRepository>();
             services.AddTransient<IProductRepository, ProductRepository>();
+            services.AddTransient<ITagRepository, TagRepository>();
+            services.AddTransient<IProductTagRepository, ProductTagRepository>();
 
             //Config Service
             services.AddTransient<IProductCategoryService, ProductCategoryService>();

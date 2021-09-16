@@ -11,5 +11,15 @@ namespace CoreAdvanced_App.Application.Interfaces
         List<ProductViewModel> GetAll();
 
         PagedResult<ProductViewModel> GetAllPaing(int? categoryId, string keyword, int page, int pageSize);
+
+        ProductViewModel Add(ProductViewModel product);
+
+        void Update(ProductViewModel product);
+
+        void Delete(int id);
+
+        ProductViewModel GetById(int id);
+
+        void Save();
     }
 }
