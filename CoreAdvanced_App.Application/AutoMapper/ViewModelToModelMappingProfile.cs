@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using CoreAdvanced_App.Application.ViewModels.Product;
 using CoreAdvanced_App.Application.ViewModels.System;
+using CoreAdvanced_App.Application.ViewModels.User;
 using CoreAdvanced_App.Data.Entities;
 using System;
 using System.Collections.Generic;
@@ -23,6 +24,10 @@ namespace CoreAdvanced_App.Application.AutoMapper
 
             CreateMap<FunctionViewModel, Function>()
                             .ConstructUsing(c => new Function(c.Name, c.URL, c.ParentId, c.IconCss, c.SortOrder));
+
+            CreateMap<AppUserViewModel, AppUser>()
+                .ConstructUsing(c => new AppUser(c.Id.GetValueOrDefault(Guid.Empty), c.FullName, c.UserName,
+                c.Email, c.PhoneNumber, c.Avatar, c.Status));
         }
     }
 }
