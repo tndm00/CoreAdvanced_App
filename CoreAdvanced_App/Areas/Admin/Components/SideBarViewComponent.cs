@@ -26,7 +26,7 @@ namespace CoreAdvanced_App.Areas.Admin.Components
 
             if (roles.Split(";").Contains(SystemConstants.AdminRole))
             {
-                lstFunction = await _functionService.GetAll();
+                lstFunction = await _functionService.GetAll(string.Empty);
             }
             else
             {

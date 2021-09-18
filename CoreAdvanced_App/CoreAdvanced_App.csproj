@@ -32,6 +32,7 @@
     <Folder Include="wwwroot\lib\mustache\" />
     <Folder Include="wwwroot\lib\jquery-easyui\" />
     <Folder Include="wwwroot\lib\ck-editor\" />
+    <Folder Include="wwwroot\lib\treegrid\" />
     <Folder Include="wwwroot\lib\twbs-pagination\" />
   </ItemGroup>
 
