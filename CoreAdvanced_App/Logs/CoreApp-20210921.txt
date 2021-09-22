@@ -1,0 +1,6 @@
+2021-09-21T22:13:10.3503600+07:00  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2021-09-21T22:13:10.3622048+07:00  [INF] Hosting environment: "Development" (c3307c92)
+2021-09-21T22:13:10.3642269+07:00  [INF] Content root path: "D:\THANH NHAN\CORE_ASP.NET\CoreAdvanced_App\CoreAdvanced_App" (b5d60022)
+2021-09-21T22:21:28.8206636+07:00 8000013c-0005-f700-b63f-84710c7967bb [INF] User logged in. (fdce0db4)
+2021-09-21T22:23:33.8587615+07:00 80000220-0004-fa00-b63f-84710c7967bb [INF] User logged in. (fdce0db4)
+2021-09-21T22:23:49.8169077+07:00 80000176-0000-f300-b63f-84710c7967bb [INF] User logged in. (fdce0db4)

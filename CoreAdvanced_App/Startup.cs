@@ -2,6 +2,7 @@ using AutoMapper;
 using CoreAdvanced_App.Application.AutoMapper;
 using CoreAdvanced_App.Application.Implementation;
 using CoreAdvanced_App.Application.Interfaces;
+using CoreAdvanced_App.Authorization;
 using CoreAdvanced_App.Data.EF;
 using CoreAdvanced_App.Data.EF.Repositories;
 using CoreAdvanced_App.Data.Entities;
@@ -9,6 +10,7 @@ using CoreAdvanced_App.Data.IRespositories;
 using CoreAdvanced_App.Helper;
 using CoreAdvanced_App.Infrastructure.Interfaces;
 using CoreAdvanced_App.Utilities.Constants;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
@@ -91,6 +93,9 @@ namespace CoreAdvanced_App
             services.AddTransient<IProductService, ProductService>();
             services.AddTransient<IUserService, UserService>();
             services.AddTransient<IRoleService, RoleService>();
+
+            services.AddTransient<IAuthorizationHandler, BaseResourceAuthorizationCrudHandler>();
+
 
             //Config Json
             services.AddMvc().AddJsonOptions(o =>

@@ -1,4 +1,8 @@
-﻿@{
+﻿@using Microsoft.AspNetCore.Authorization
+@using CoreAdvanced_App.Authorization
+@inject IAuthorizationService AuthorizationService
+
+@{
     ViewData["Title"] = "User List";
 }
 @section Scripts{
@@ -21,7 +25,13 @@
 
         <div class="title_right">
             <div class="col-md-2 col-sm-2 col-xs-12 form-group pull-right top_search">
-                <button class="btn btn-success" id="btn-create" type="button">Create</button>
+                @{
+                    var result = await AuthorizationService.AuthorizeAsync(User, "USER", Operations.Read);
+                }
+                @if (result.Succeeded)
+                {
+                    <button class="btn btn-success" id="btn-create" type="button">Create</button>
+                }
             </div>
             <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
                 <div class="input-group">
@@ -91,8 +101,14 @@
             <td>{{{DateCreated}}}</td>
             <td>{{{Status}}}</td>
             <td>
-                <a href="#" data-id="{{Id}}" class="btn btn-primary btn-sm btn-edit"><i class="fa fa-pencil"></i></a>
-                <a href="#" data-id="{{Id}}" class="btn btn-danger btn-sm btn-delete"><i class="fa fa-trash"></i></a>
+                @if((await AuthorizationService.AuthorizeAsync(User, "USER", Operations.Update)).Succeeded)
+                {
+                    <a href="#" data-id="{{Id}}" class="btn btn-primary btn-sm btn-edit"><i class="fa fa-pencil"></i></a>
+                }
+                @if((await AuthorizationService.AuthorizeAsync(User, "USER", Operations.Delete)).Succeeded)
+                {
+                    <a href="#" data-id="{{Id}}" class="btn btn-danger btn-sm btn-delete"><i class="fa fa-trash"></i></a>
+                }
             </td>
         </tr>
     </script>

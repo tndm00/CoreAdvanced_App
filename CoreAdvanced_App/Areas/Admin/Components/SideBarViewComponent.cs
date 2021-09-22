@@ -24,7 +24,7 @@ namespace CoreAdvanced_App.Areas.Admin.Components
             var roles = ((ClaimsPrincipal)User).GetSpecificClaim("Roles");
             List<FunctionViewModel> lstFunction;
 
-            if (roles.Split(";").Contains(SystemConstants.AdminRole))
+            if (roles.Split(";").Contains(SystemConstants.AppRole.AdminRole))
             {
                 lstFunction = await _functionService.GetAll(string.Empty);
             }
