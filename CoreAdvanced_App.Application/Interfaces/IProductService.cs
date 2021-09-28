@@ -20,6 +20,9 @@ namespace CoreAdvanced_App.Application.Interfaces
 
         ProductViewModel GetById(int id);
 
+        void ImportExcel(string filePath, int categoryId);
+
+
         void Save();
     }
 }

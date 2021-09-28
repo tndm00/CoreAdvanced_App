@@ -17,7 +17,7 @@ namespace CoreAdvanced_App.Data.Entities
         }
 
         public Bill(string customerName, string customerAddress, string customerMobile, string customerMessage,
-            BillStatus billStatus, PaymentMethod paymentMethod, Status status, Guid customerId)
+            BillStatus billStatus, PaymentMethod paymentMethod, Status status, Guid? customerId)
         {
             CustomerName = customerName;
             CustomerAddress = customerAddress;
@@ -30,7 +30,7 @@ namespace CoreAdvanced_App.Data.Entities
         }
 
         public Bill(int id, string customerName, string customerAddress, string customerMobile, string customerMessage,
-            BillStatus billStatus, PaymentMethod paymentMethod, Status status, Guid customerId)
+            BillStatus billStatus, PaymentMethod paymentMethod, Status status, Guid? customerId)
         {
             Id = id;
             CustomerName = customerName;
@@ -43,7 +43,7 @@ namespace CoreAdvanced_App.Data.Entities
             CustomerId = customerId;
         }
 
-        public Guid CustomerId { get; set; }
+        public Guid? CustomerId { get; set; }
 
         [Required]
         [MaxLength(256)]
@@ -60,10 +60,6 @@ namespace CoreAdvanced_App.Data.Entities
         [Required]
         [MaxLength(256)]
         public string CustomerMessage { get; set; }
-
-        [Required]
-        [MaxLength(256)]
-        public string CustomerEmail { get; set; }
 
         public PaymentMethod PaymentMethod { set; get; }
 

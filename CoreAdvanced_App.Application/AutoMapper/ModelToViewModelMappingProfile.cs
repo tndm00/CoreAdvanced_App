@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using CoreAdvanced_App.Application.ViewModels.Order;
 using CoreAdvanced_App.Application.ViewModels.Product;
 using CoreAdvanced_App.Application.ViewModels.System;
 using CoreAdvanced_App.Application.ViewModels.User;
@@ -19,6 +20,13 @@ namespace CoreAdvanced_App.Application.AutoMapper
             CreateMap<AppUser, AppUserViewModel>();
 
             CreateMap<AppRole, AppRoleViewModel>();
+            CreateMap<Bill, BillViewModel>();
+
+            CreateMap<BillDetail, BillDetailViewModel>();
+
+            CreateMap<Color, ColorViewModel>();
+
+            CreateMap<Size, SizeViewModel>();
         }
     }
 }
