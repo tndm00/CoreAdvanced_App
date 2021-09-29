@@ -9,6 +9,7 @@
 
 @section Scripts {
     <script src="~/lib/jQuery-EasyUI/jquery.easyui.min.js"></script>
+    <script src="~/app/controllers/product/quantity-management.js"></script>
     <script src="~/app/controllers/product/index.js" asp-append-version="true"></script>
     <script>
         var product = new productController();
@@ -74,6 +75,7 @@
                                 <th class="column-title">Image </th>
                                 <th class="column-title">Created Date </th>
                                 <th class="column-title last">Status </th>
+                                <th class="column-title"># </th>
                             </tr>
                         </thead>
                         <tbody id="tbl-Content">
@@ -106,6 +108,8 @@
 </div>
 @await Html.PartialAsync("Partial/_AddEditModal.cshtml")
 @await Html.PartialAsync("Partial/_ImportExcelModal.cshtml")
+@await Html.PartialAsync("Partial/_QuantityManagement.cshtml")
+
 
 <script id="table-template" type="x-tmpl-mustache">
     <tr class="even pointer">
@@ -122,5 +126,10 @@
         <td>{{{Image}}}</td>
         <td>{{{DateCreated}}}</td>
         <td>{{{Status}}}</td>
+        <td>
+            <a href="#" data-id="{{Id}}" class="btn btn-xs btn-images"><i class="fa fa-image"></i></a>
+            <a href="#" data-id="{{Id}}" class="btn btn-xs btn-quantity"><i class="fa fa-hourglass-start"></i></a>
+            <a href="#" data-id="{{Id}}" class="btn btn-xs btn-whole-price"><i class="fa fa-money"></i></a>
+        </td>
     </tr>
 </script>

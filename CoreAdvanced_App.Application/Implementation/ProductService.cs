@@ -25,11 +25,12 @@ namespace CoreAdvanced_App.Application.Implementation
         private readonly IProductTagRepository _productTagRepository;
         private readonly IProductRepository _productRepsitory;
         private readonly IProductRepository _productRepository;
+        private readonly IProductQuantityRepository _productQuantityRepository;
         private readonly IUnitOfWork _unitOfWork;
 
         public ProductService(IProductRepository productRepsitory, IMapper mapper, 
             ITagRepository tagRepository, IProductTagRepository productTagRepository, 
-            IProductRepository productRepository, IUnitOfWork unitOfWork)
+            IProductRepository productRepository, IUnitOfWork unitOfWork, IProductQuantityRepository productQuantityRepository)
         {
             _productRepsitory = productRepsitory;
             _tagRepository = tagRepository;
@@ -37,6 +38,7 @@ namespace CoreAdvanced_App.Application.Implementation
             _productRepository = productRepository;
             _mapper = mapper;
             _unitOfWork = unitOfWork;
+            _productQuantityRepository = productQuantityRepository;
         }
 
         public ProductViewModel Add(ProductViewModel productVm)
@@ -74,6 +76,21 @@ namespace CoreAdvanced_App.Application.Implementation
 
             }
             return productVm;
+        }
+
+        public void AddQuantity(int productId, List<ProductQuantityViewModel> quantities)
+        {
+            _productQuantityRepository.RemoveMultiple(_productQuantityRepository.FindAll(x => x.ProductId == productId).ToList());
+            foreach (var quantity in quantities)
+            {
+                _productQuantityRepository.Add(new ProductQuantity()
+                {
+                    ProductId = productId,
+                    ColorId = quantity.ColorId,
+                    SizeId = quantity.SizeId,
+                    Quantity = quantity.Quantity
+                });
+            }
         }
 
         public void Delete(int id)
@@ -125,6 +142,11 @@ namespace CoreAdvanced_App.Application.Implementation
         public ProductViewModel GetById(int id)
         {
             return _mapper.Map<Product, ProductViewModel>(_productRepository.FindById(id));
+        }
+
+        public List<ProductQuantityViewModel> GetQuantities(int productId)
+        {
+            return _productQuantityRepository.FindAll(x => x.ProductId == productId).ProjectTo<ProductQuantityViewModel>(_mapper.ConfigurationProvider).ToList();
         }
 
         public void ImportExcel(string filePath, int categoryId)

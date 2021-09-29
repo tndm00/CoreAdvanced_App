@@ -20,6 +20,7 @@ namespace CoreAdvanced_App.Application.AutoMapper
             CreateMap<AppUser, AppUserViewModel>();
 
             CreateMap<AppRole, AppRoleViewModel>();
+
             CreateMap<Bill, BillViewModel>();
 
             CreateMap<BillDetail, BillDetailViewModel>();
@@ -27,6 +28,9 @@ namespace CoreAdvanced_App.Application.AutoMapper
             CreateMap<Color, ColorViewModel>();
 
             CreateMap<Size, SizeViewModel>();
+
+            CreateMap<ProductQuantity, ProductQuantityViewModel>().MaxDepth(2);
+
         }
     }
 }
