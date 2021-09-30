@@ -26,11 +26,14 @@ namespace CoreAdvanced_App.Application.Implementation
         private readonly IProductRepository _productRepsitory;
         private readonly IProductRepository _productRepository;
         private readonly IProductQuantityRepository _productQuantityRepository;
+        private readonly IProductImageRepository _productImageRepository;
         private readonly IUnitOfWork _unitOfWork;
 
         public ProductService(IProductRepository productRepsitory, IMapper mapper, 
             ITagRepository tagRepository, IProductTagRepository productTagRepository, 
-            IProductRepository productRepository, IUnitOfWork unitOfWork, IProductQuantityRepository productQuantityRepository)
+            IProductRepository productRepository, IUnitOfWork unitOfWork, 
+            IProductQuantityRepository productQuantityRepository,
+            IProductImageRepository productImageRepository)
         {
             _productRepsitory = productRepsitory;
             _tagRepository = tagRepository;
@@ -39,6 +42,7 @@ namespace CoreAdvanced_App.Application.Implementation
             _mapper = mapper;
             _unitOfWork = unitOfWork;
             _productQuantityRepository = productQuantityRepository;
+            _productImageRepository = productImageRepository;
         }
 
         public ProductViewModel Add(ProductViewModel productVm)
@@ -76,6 +80,20 @@ namespace CoreAdvanced_App.Application.Implementation
 
             }
             return productVm;
+        }
+
+        public void AddImages(int productId, string[] images)
+        {
+            _productImageRepository.RemoveMultiple(_productImageRepository.FindAll(x => x.ProductId == productId).ToList());
+            foreach (var image in images)
+            {
+                _productImageRepository.Add(new ProductImage()
+                {
+                    Path = image,
+                    ProductId = productId,
+                    Caption = string.Empty
+                });
+            }
         }
 
         public void AddQuantity(int productId, List<ProductQuantityViewModel> quantities)
@@ -142,6 +160,12 @@ namespace CoreAdvanced_App.Application.Implementation
         public ProductViewModel GetById(int id)
         {
             return _mapper.Map<Product, ProductViewModel>(_productRepository.FindById(id));
+        }
+
+        public List<ProductImageViewModel> GetImages(int productId)
+        {
+            return _productImageRepository.FindAll(x => x.ProductId == productId)
+                            .ProjectTo<ProductImageViewModel>(_mapper.ConfigurationProvider).ToList();
         }
 
         public List<ProductQuantityViewModel> GetQuantities(int productId)

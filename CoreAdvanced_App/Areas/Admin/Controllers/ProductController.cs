@@ -179,6 +179,21 @@ namespace CoreAdvanced_App.Areas.Admin.Controllers
             return new OkObjectResult(quantities);
         }
 
+        [HttpPost]
+        public IActionResult SaveImages(int productId, string[] images)
+        {
+            _productService.AddImages(productId, images);
+            _productService.Save();
+            return new OkObjectResult(images);
+        }
+
+        [HttpGet]
+        public IActionResult GetImages(int productId)
+        {
+            var images = _productService.GetImages(productId);
+            return new OkObjectResult(images);
+        }
+
         #endregion
     }
 }
