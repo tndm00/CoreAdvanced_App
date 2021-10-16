@@ -27,13 +27,15 @@ namespace CoreAdvanced_App.Application.Implementation
         private readonly IProductRepository _productRepository;
         private readonly IProductQuantityRepository _productQuantityRepository;
         private readonly IProductImageRepository _productImageRepository;
+        private readonly IWholePriceRepository _wholePriceRepository;
         private readonly IUnitOfWork _unitOfWork;
 
         public ProductService(IProductRepository productRepsitory, IMapper mapper, 
             ITagRepository tagRepository, IProductTagRepository productTagRepository, 
             IProductRepository productRepository, IUnitOfWork unitOfWork, 
             IProductQuantityRepository productQuantityRepository,
-            IProductImageRepository productImageRepository)
+            IProductImageRepository productImageRepository,
+            IWholePriceRepository wholePriceRepository)
         {
             _productRepsitory = productRepsitory;
             _tagRepository = tagRepository;
@@ -43,6 +45,7 @@ namespace CoreAdvanced_App.Application.Implementation
             _unitOfWork = unitOfWork;
             _productQuantityRepository = productQuantityRepository;
             _productImageRepository = productImageRepository;
+            _wholePriceRepository = wholePriceRepository;
         }
 
         public ProductViewModel Add(ProductViewModel productVm)
@@ -111,6 +114,21 @@ namespace CoreAdvanced_App.Application.Implementation
             }
         }
 
+        public void AddWholePrice(int productId, List<WholePriceViewModel> wholePrices)
+        {
+            _wholePriceRepository.RemoveMultiple(_wholePriceRepository.FindAll(x => x.ProductId == productId).ToList());
+            foreach (var wholePrice in wholePrices)
+            {
+                _wholePriceRepository.Add(new WholePrice()
+                {
+                    ProductId = productId,
+                    FromQuantity = wholePrice.FromQuantity,
+                    ToQuantity = wholePrice.ToQuantity,
+                    Price = wholePrice.Price
+                });
+            }
+        }
+
         public void Delete(int id)
         {
             _productRepository.Remove(id);
@@ -171,6 +189,11 @@ namespace CoreAdvanced_App.Application.Implementation
         public List<ProductQuantityViewModel> GetQuantities(int productId)
         {
             return _productQuantityRepository.FindAll(x => x.ProductId == productId).ProjectTo<ProductQuantityViewModel>(_mapper.ConfigurationProvider).ToList();
+        }
+
+        public List<WholePriceViewModel> GetWholePrices(int productId)
+        {
+            return _wholePriceRepository.FindAll(x => x.ProductId == productId).ProjectTo<WholePriceViewModel>(_mapper.ConfigurationProvider).ToList();
         }
 
         public void ImportExcel(string filePath, int categoryId)

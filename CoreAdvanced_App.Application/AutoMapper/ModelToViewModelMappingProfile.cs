@@ -33,6 +33,8 @@ namespace CoreAdvanced_App.Application.AutoMapper
 
             CreateMap<ProductImage, ProductImageViewModel>().MaxDepth(2);
 
+            CreateMap<WholePrice, WholePriceViewModel>().MaxDepth(2);
+
         }
     }
 }

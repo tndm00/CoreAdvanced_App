@@ -92,6 +92,7 @@ namespace CoreAdvanced_App
             services.AddTransient<ISizeRepository, SizeRepository>();
             services.AddTransient<IProductQuantityRepository, ProductQuantityRepository>();
             services.AddTransient<IProductImageRepository, ProductImageRepository>();
+            services.AddTransient<IWholePriceRepository, WholePriceRepository>();
 
             //Config Service
             services.AddTransient<IProductCategoryService, ProductCategoryService>();

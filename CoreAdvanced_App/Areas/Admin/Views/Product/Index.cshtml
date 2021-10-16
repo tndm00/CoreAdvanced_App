@@ -11,6 +11,7 @@
     <script src="~/lib/jQuery-EasyUI/jquery.easyui.min.js"></script>
     <script src="~/app/controllers/product/quantity-management.js"></script>
     <script src="~/app/controllers/product/image-management.js"></script>
+    <script src="~/app/controllers/product/whole-price-management.js"></script>
     <script src="~/app/controllers/product/index.js" asp-append-version="true"></script>
     <script>
         var product = new productController();
@@ -111,7 +112,7 @@
 @await Html.PartialAsync("Partial/_ImportExcelModal.cshtml")
 @await Html.PartialAsync("Partial/_QuantityManagement.cshtml")
 @await Html.PartialAsync("Partial/_ImageManagement.cshtml")
-
+@await Html.PartialAsync("Partial/_WholePriceManagement.cshtml")
 
 <script id="table-template" type="x-tmpl-mustache">
     <tr class="even pointer">
