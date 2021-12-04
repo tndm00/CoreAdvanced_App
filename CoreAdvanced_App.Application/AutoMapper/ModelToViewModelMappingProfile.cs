@@ -1,4 +1,6 @@
 ﻿using AutoMapper;
+using CoreAdvanced_App.Application.ViewModels.Blog;
+using CoreAdvanced_App.Application.ViewModels.Common;
 using CoreAdvanced_App.Application.ViewModels.Order;
 using CoreAdvanced_App.Application.ViewModels.Product;
 using CoreAdvanced_App.Application.ViewModels.System;
@@ -34,6 +36,16 @@ namespace CoreAdvanced_App.Application.AutoMapper
             CreateMap<ProductImage, ProductImageViewModel>().MaxDepth(2);
 
             CreateMap<WholePrice, WholePriceViewModel>().MaxDepth(2);
+
+            CreateMap<Blog, BlogViewModel>().MaxDepth(2);
+
+            CreateMap<BlogTag, BlogTagViewModel>().MaxDepth(2);
+
+            CreateMap<Slide, SlideViewModel>().MaxDepth(2);
+
+            CreateMap<SystemConfig, SystemConfigViewModel>().MaxDepth(2);
+
+            CreateMap<Footer, FooterViewModel>().MaxDepth(2);
 
         }
     }

@@ -30,9 +30,9 @@ namespace CoreAdvanced_App.Application.Implementation
         private readonly IWholePriceRepository _wholePriceRepository;
         private readonly IUnitOfWork _unitOfWork;
 
-        public ProductService(IProductRepository productRepsitory, IMapper mapper, 
-            ITagRepository tagRepository, IProductTagRepository productTagRepository, 
-            IProductRepository productRepository, IUnitOfWork unitOfWork, 
+        public ProductService(IProductRepository productRepsitory, IMapper mapper,
+            ITagRepository tagRepository, IProductTagRepository productTagRepository,
+            IProductRepository productRepository, IUnitOfWork unitOfWork,
             IProductQuantityRepository productQuantityRepository,
             IProductImageRepository productImageRepository,
             IWholePriceRepository wholePriceRepository)
@@ -180,10 +180,25 @@ namespace CoreAdvanced_App.Application.Implementation
             return _mapper.Map<Product, ProductViewModel>(_productRepository.FindById(id));
         }
 
+        public List<ProductViewModel> GetHotProduct(int top)
+        {
+            return _productRepository.FindAll(x => x.Status == Status.Active && x.HotFlag == true)
+                .OrderByDescending(x => x.DateCreated)
+                .Take(top)
+                .ProjectTo<ProductViewModel>(_mapper.ConfigurationProvider)
+                .ToList();
+        }
+
         public List<ProductImageViewModel> GetImages(int productId)
         {
             return _productImageRepository.FindAll(x => x.ProductId == productId)
                             .ProjectTo<ProductImageViewModel>(_mapper.ConfigurationProvider).ToList();
+        }
+
+        public List<ProductViewModel> GetLastest(int top)
+        {
+            return _productRepository.FindAll(x => x.Status == Status.Active).OrderByDescending(x => x.DateCreated)
+                .Take(top).ProjectTo<ProductViewModel>(_mapper.ConfigurationProvider).ToList();
         }
 
         public List<ProductQuantityViewModel> GetQuantities(int productId)
