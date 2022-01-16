@@ -1,0 +1,6 @@
+2022-01-04T22:08:52.4378937+07:00  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2022-01-04T22:08:52.4443146+07:00  [INF] Hosting environment: "Development" (c3307c92)
+2022-01-04T22:08:52.4444501+07:00  [INF] Content root path: "D:\ThanhNhan\THANH NHAN\CORE_ASP.NET\CoreAdvanced_App\CoreAdvanced_App" (b5d60022)
+2022-01-04T22:46:05.8391547+07:00  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2022-01-04T22:46:05.8501297+07:00  [INF] Hosting environment: "Development" (c3307c92)
+2022-01-04T22:46:05.8503208+07:00  [INF] Content root path: "D:\ThanhNhan\THANH NHAN\CORE_ASP.NET\CoreAdvanced_App\CoreAdvanced_App" (b5d60022)

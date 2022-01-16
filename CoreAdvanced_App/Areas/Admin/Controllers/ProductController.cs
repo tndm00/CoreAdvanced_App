@@ -22,7 +22,7 @@ namespace CoreAdvanced_App.Areas.Admin.Controllers
         private readonly IProductCategoryService _productCategoryService;
         private readonly IHostingEnvironment _hostingEnvironment;
 
-        public ProductController(IProductService productService, 
+        public ProductController(IProductService productService,
             IProductCategoryService productCategoryService,
             IHostingEnvironment hostingEnvironment)
         {
@@ -47,7 +47,7 @@ namespace CoreAdvanced_App.Areas.Admin.Controllers
 
         public IActionResult GetAllPaging(int? categoryId, string keyword, int page, int pageSize)
         {
-            var model = _productService.GetAllPaing(categoryId, keyword, page, pageSize);
+            var model = _productService.GetAllPaging(categoryId, keyword, page, pageSize);
             return new OkObjectResult(model);
         }
 

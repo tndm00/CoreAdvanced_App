@@ -1,4 +1,5 @@
-﻿using CoreAdvanced_App.Application.ViewModels.Product;
+﻿using CoreAdvanced_App.Application.ViewModels.Common;
+using CoreAdvanced_App.Application.ViewModels.Product;
 using CoreAdvanced_App.Utilities.Dtos;
 using System;
 using System.Collections.Generic;
@@ -10,7 +11,7 @@ namespace CoreAdvanced_App.Application.Interfaces
     {
         List<ProductViewModel> GetAll();
 
-        PagedResult<ProductViewModel> GetAllPaing(int? categoryId, string keyword, int page, int pageSize);
+        PagedResult<ProductViewModel> GetAllPaging(int? categoryId, string keyword, int page, int pageSize);
 
         ProductViewModel Add(ProductViewModel product);
 
@@ -39,5 +40,11 @@ namespace CoreAdvanced_App.Application.Interfaces
         List<ProductViewModel> GetLastest(int top);
 
         List<ProductViewModel> GetHotProduct(int top);
+
+        List<ProductViewModel> GetRelatedProducts(int id, int top);
+
+        List<ProductViewModel> GetUpsellProducts(int top);
+
+        List<TagViewModel> GetProductTags(int productId);
     }
 }

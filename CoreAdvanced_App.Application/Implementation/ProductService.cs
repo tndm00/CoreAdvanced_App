@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using CoreAdvanced_App.Application.Interfaces;
+using CoreAdvanced_App.Application.ViewModels.Common;
 using CoreAdvanced_App.Application.ViewModels.Product;
 using CoreAdvanced_App.Data.Entities;
 using CoreAdvanced_App.Data.Enums;
@@ -144,7 +145,7 @@ namespace CoreAdvanced_App.Application.Implementation
             return _productRepsitory.FindAll(_ => _.ProductCategory).ProjectTo<ProductViewModel>(_mapper.ConfigurationProvider).ToList();
         }
 
-        public PagedResult<ProductViewModel> GetAllPaing(int? categoryId, string keyword, int page, int pageSize)
+        public PagedResult<ProductViewModel> GetAllPaging(int? categoryId, string keyword, int page, int pageSize)
         {
             var query = _productRepsitory.FindAll(_ => _.Status == Status.Active);
             if (!string.IsNullOrEmpty(keyword))
@@ -201,9 +202,45 @@ namespace CoreAdvanced_App.Application.Implementation
                 .Take(top).ProjectTo<ProductViewModel>(_mapper.ConfigurationProvider).ToList();
         }
 
+        public List<TagViewModel> GetProductTags(int productId)
+        {
+            var tags = _tagRepository.FindAll();
+            var productTags = _productTagRepository.FindAll();
+
+            var query = from t in tags
+                        join pt in productTags
+                        on t.Id equals pt.TagId
+                        where pt.ProductId == productId
+                        select new TagViewModel()
+                        {
+                            Id = t.Id,
+                            Name = t.Name
+                        };
+            return query.ToList();
+        }
+
         public List<ProductQuantityViewModel> GetQuantities(int productId)
         {
             return _productQuantityRepository.FindAll(x => x.ProductId == productId).ProjectTo<ProductQuantityViewModel>(_mapper.ConfigurationProvider).ToList();
+        }
+
+        public List<ProductViewModel> GetRelatedProducts(int id, int top)
+        {
+            var product = _productRepository.FindById(id);
+            return _productRepository.FindAll(x => x.Status == Status.Active
+                && x.Id != id && x.CategoryId == product.CategoryId)
+            .OrderByDescending(x => x.DateCreated)
+            .Take(top)
+            .ProjectTo<ProductViewModel>(_mapper.ConfigurationProvider)
+            .ToList();
+        }
+
+        public List<ProductViewModel> GetUpsellProducts(int top)
+        {
+            return _productRepository.FindAll(x => x.PromotionPrice != null)
+               .OrderByDescending(x => x.DateModified)
+               .Take(top)
+               .ProjectTo<ProductViewModel>(_mapper.ConfigurationProvider).ToList();
         }
 
         public List<WholePriceViewModel> GetWholePrices(int productId)
