@@ -9,6 +9,7 @@ using CoreAdvanced_App.Data.Entities;
 using CoreAdvanced_App.Data.IRespositories;
 using CoreAdvanced_App.Helper;
 using CoreAdvanced_App.Infrastructure.Interfaces;
+using CoreAdvanced_App.Services;
 using CoreAdvanced_App.Utilities.Constants;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
@@ -66,6 +67,8 @@ namespace CoreAdvanced_App
             services.AddAutoMapper(o => o.AddMaps(typeof(Startup).Assembly));
             services.AddSingleton<AutoMapper.IConfigurationProvider>(AutoMapperConfig.RegisterMapping());
             services.AddScoped<IMapper>(sp => new Mapper(sp.GetRequiredService<AutoMapper.IConfigurationProvider>(), sp.GetService));
+
+            services.AddTransient<IEmailSender, EmailSender>();
 
             //Config Repository and UnitOfWork
             services.AddTransient(typeof(IUnitOfWork), typeof(EFUnitOfWork));
