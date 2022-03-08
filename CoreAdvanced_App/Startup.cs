@@ -62,6 +62,11 @@ namespace CoreAdvanced_App
                 options.User.RequireUniqueEmail = true;
             });
 
+            services.AddSession(options =>
+            {
+                options.IdleTimeout = TimeSpan.FromHours(2);
+                options.Cookie.HttpOnly = true;
+            });
 
             //Config Automapper
             services.AddAutoMapper(o => o.AddMaps(typeof(Startup).Assembly));
@@ -148,7 +153,7 @@ namespace CoreAdvanced_App
 
             app.UseAuthentication();
             app.UseAuthorization();
-
+            app.UseSession();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(

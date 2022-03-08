@@ -17,6 +17,7 @@
 
     <!-- Favicons Icon -->
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+    <script src="~/lib/notifyjs/dist/styles/metro/notify-metro.js"></script>
 
     <!-- CSS Style -->
     <link rel="stylesheet" href="~/client-side/style.css">
@@ -82,8 +83,16 @@
 
     <!-- Slider Js -->
     <script type="text/javascript" src="~/client-side/js/revolution-slider.js"></script>
-
-    @RenderSection("Scripts", required:false)
+    <script src="~/lib/notifyjs/dist/notify.js"></script>
+    <script src="~/lib/notifyjs/dist/styles/metro/notify-metro.js"></script>
+    <script src="~/lib/mustache/extras/mustache.js"></script>
+    <script src="~/client-app/Shared/core_app.js"></script>
+    <script src="~/client-app/base/index.js"></script>
+    <script>
+        var baseObj = new BaseController();
+        baseObj.initialize();
+    </script>
+    @RenderSection("Scripts", required: false)
 
 </body>
 </html>

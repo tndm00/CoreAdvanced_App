@@ -122,6 +122,11 @@ namespace CoreAdvanced_App.Application.Implementation
                 .ProjectTo<BillDetailViewModel>(_mapper.ConfigurationProvider).ToList();
         }
 
+        public ColorViewModel GetColor(int id)
+        {
+            return _mapper.Map<Color, ColorViewModel>(_colorRepository.FindById(id));
+        }
+
         public List<ColorViewModel> GetColors()
         {
             return _colorRepository.FindAll().ProjectTo<ColorViewModel>(_mapper.ConfigurationProvider).ToList();
@@ -134,6 +139,11 @@ namespace CoreAdvanced_App.Application.Implementation
             var billDetailVm = _orderDetailRepository.FindAll(x => x.BillId == billId).ProjectTo<BillDetailViewModel>(_mapper.ConfigurationProvider).ToList();
             billVm.BillDetails = billDetailVm;
             return billVm;
+        }
+
+        public SizeViewModel GetSize(int id)
+        {
+            return _mapper.Map<Size, SizeViewModel>(_sizeRepository.FindById(id));
         }
 
         public List<SizeViewModel> GetSizes()

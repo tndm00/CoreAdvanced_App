@@ -1,28 +1,33 @@
 ﻿using CoreAdvanced_App.Application.Interfaces;
 using CoreAdvanced_App.Models.ProductViewModels;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Configuration;
+using System.Linq;
 
 namespace CoreAdvanced_App.Controllers
 {
     public class ProductController : Controller
     {
         IProductService _productService;
+        IBillService _billService;
         IProductCategoryService _productCategoryService;
         IConfiguration _configuration;
 
         public ProductController(IProductService productService, IConfiguration configuration,
-            IProductCategoryService productCategoryService)
+            IProductCategoryService productCategoryService, IBillService billService)
         {
             _productService = productService;
             _productCategoryService = productCategoryService;
             _configuration = configuration;
+            _billService = billService;
         }
 
         [Route("products.html")]
         public IActionResult Index()
         {
-            return View();
+            var categories = _productCategoryService.GetAll();
+            return View(categories);
         }
 
         [Route("{alias}-c.{id}.html")]
@@ -51,6 +56,16 @@ namespace CoreAdvanced_App.Controllers
             model.RelatedProducts = _productService.GetRelatedProducts(id, 9);
             model.UpsellProducts = _productService.GetUpsellProducts(6);
             model.ProductImages = _productService.GetImages(id);
+            model.Colors = _billService.GetColors().Select(x => new SelectListItem()
+            {
+                Text = x.Name,
+                Value = x.Id.ToString()
+            }).ToList();
+            model.Sizes = _billService.GetSizes().Select(x => new SelectListItem()
+            {
+                Text = x.Name,
+                Value = x.Id.ToString()
+            }).ToList();
             model.Tags = _productService.GetProductTags(id);
             return View(model);
         }

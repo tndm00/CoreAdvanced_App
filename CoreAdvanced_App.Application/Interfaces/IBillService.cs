@@ -29,6 +29,10 @@ namespace CoreAdvanced_App.Application.Interfaces
 
         List<SizeViewModel> GetSizes();
 
+        ColorViewModel GetColor(int id);
+
+        SizeViewModel GetSize(int id);
+
         void ConfirmBill(int billId);
 
         void PendingBill(int billId);

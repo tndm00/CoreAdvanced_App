@@ -1,5 +1,6 @@
 ﻿using CoreAdvanced_App.Application.ViewModels.Common;
 using CoreAdvanced_App.Application.ViewModels.Product;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,5 +23,9 @@ namespace CoreAdvanced_App.Models.ProductViewModels
         public List<ProductViewModel> LastestProducts { get; set; }
 
         public List<TagViewModel> Tags { set; get; }
+
+        public List<SelectListItem> Colors { set; get; }
+
+        public List<SelectListItem> Sizes { set; get; }
     }
 }
