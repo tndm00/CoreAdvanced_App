@@ -1,0 +1,5 @@
+2022-03-17T17:21:36.2511219+07:00  [INF] Now listening on: "https://localhost:5001" (d826f4b8)
+2022-03-17T17:21:36.2557730+07:00  [INF] Now listening on: "http://localhost:5000" (d826f4b8)
+2022-03-17T17:21:36.2560642+07:00  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2022-03-17T17:21:36.2561175+07:00  [INF] Hosting environment: "Development" (c3307c92)
+2022-03-17T17:21:36.2561449+07:00  [INF] Content root path: "D:\ThanhNhan\THANH NHAN\CORE_ASP.NET\CoreAdvanced_App\CoreAdvanced_App" (b5d60022)
