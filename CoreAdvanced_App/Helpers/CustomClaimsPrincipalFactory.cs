@@ -27,6 +27,7 @@ namespace CoreAdvanced_App.Helper
                 new Claim("FullName", user.FullName),
                 new Claim("Avatar", user.Avatar??string.Empty),
                 new Claim("Roles", string.Join(";", roles)),
+                new Claim("UserId", user.Id.ToString())
             });
 
             return principal;

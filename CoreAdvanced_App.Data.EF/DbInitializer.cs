@@ -223,7 +223,7 @@ namespace CoreAdvanced_App.Data.EF
                 {
                     Id = "HomeTitle",
                     Name = "Home's title",
-                    Value1 = "Tedu Shop home",
+                    Value1 = "NNShop Shop home",
                     Status = Status.Active
                 });
             }
@@ -243,7 +243,7 @@ namespace CoreAdvanced_App.Data.EF
                 {
                     Id = "HomeMetaDescription",
                     Name = "Home Description",
-                    Value1 = "Home tedu",
+                    Value1 = "Home NNShop",
                     Status = Status.Active
                 });
             }

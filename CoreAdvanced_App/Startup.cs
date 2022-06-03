@@ -7,6 +7,7 @@ using CoreAdvanced_App.Data.EF;
 using CoreAdvanced_App.Data.EF.Repositories;
 using CoreAdvanced_App.Data.Entities;
 using CoreAdvanced_App.Data.IRespositories;
+using CoreAdvanced_App.Extensions;
 using CoreAdvanced_App.Helper;
 using CoreAdvanced_App.Infrastructure.Interfaces;
 using CoreAdvanced_App.Services;
@@ -44,6 +45,8 @@ namespace CoreAdvanced_App
                 .AddEntityFrameworkStores<AppDbContext>()
                 .AddDefaultTokenProviders();
 
+            services.AddMinResponse();
+
             // Configure Identity
             services.Configure<IdentityOptions>(options =>
             {
@@ -69,11 +72,13 @@ namespace CoreAdvanced_App
             });
 
             //Config Automapper
+            services.AddImageResizer();
             services.AddAutoMapper(o => o.AddMaps(typeof(Startup).Assembly));
             services.AddSingleton<AutoMapper.IConfigurationProvider>(AutoMapperConfig.RegisterMapping());
             services.AddScoped<IMapper>(sp => new Mapper(sp.GetRequiredService<AutoMapper.IConfigurationProvider>(), sp.GetService));
 
             services.AddTransient<IEmailSender, EmailSender>();
+            services.AddTransient<IViewRenderService, ViewRenderService>();
 
             //Config Repository and UnitOfWork
             services.AddTransient(typeof(IUnitOfWork), typeof(EFUnitOfWork));
@@ -106,6 +111,7 @@ namespace CoreAdvanced_App
             services.AddTransient<ISlideRepository, SlideRepository>();
             services.AddTransient<ISystemConfigRepository, SystemConfigRepository>();
             services.AddTransient<IFooterRepository, FooterRepository>();
+            services.AddTransient<IPageRepository, PageRepository>();
 
             //Config Service
             services.AddTransient<IProductCategoryService, ProductCategoryService>();
@@ -116,6 +122,7 @@ namespace CoreAdvanced_App
             services.AddTransient<IBillService, BillService>();
             services.AddTransient<IBlogService, BlogService>();
             services.AddTransient<ICommonService, CommonService>();
+            services.AddTransient<IPageService, PageService>();
 
             services.AddTransient<IAuthorizationHandler, BaseResourceAuthorizationCrudHandler>();
 
@@ -147,8 +154,9 @@ namespace CoreAdvanced_App
                 app.UseHsts();
             }
             app.UseHttpsRedirection();
+            app.UseImageResizer();
             app.UseStaticFiles();
-
+            app.UseMinResponse();
             app.UseRouting();
 
             app.UseAuthentication();

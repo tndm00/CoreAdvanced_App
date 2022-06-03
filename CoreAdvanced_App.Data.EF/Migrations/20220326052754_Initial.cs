@@ -142,12 +142,11 @@ namespace CoreAdvanced_App.Data.EF.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    CustomerId = table.Column<Guid>(nullable: false),
+                    CustomerId = table.Column<Guid>(nullable: true),
                     CustomerName = table.Column<string>(maxLength: 256, nullable: false),
                     CustomerAddress = table.Column<string>(maxLength: 256, nullable: false),
                     CustomerMobile = table.Column<string>(maxLength: 256, nullable: false),
                     CustomerMessage = table.Column<string>(maxLength: 256, nullable: false),
-                    CustomerEmail = table.Column<string>(maxLength: 256, nullable: false),
                     PaymentMethod = table.Column<int>(nullable: false),
                     BillStatus = table.Column<int>(nullable: false),
                     Status = table.Column<int>(nullable: false),

@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using CoreAdvanced_App.Application.ViewModels.Blog;
 using CoreAdvanced_App.Application.ViewModels.Order;
 using CoreAdvanced_App.Application.ViewModels.Product;
 using CoreAdvanced_App.Application.ViewModels.System;
@@ -39,6 +40,9 @@ namespace CoreAdvanced_App.Application.AutoMapper
             CreateMap<BillDetailViewModel, BillDetail>()
               .ConstructUsing(c => new BillDetail(c.Id, c.BillId, c.ProductId,
               c.Quantity, c.Price, c.ColorId, c.SizeId));
+
+            CreateMap<PageViewModel, Page>()
+             .ConstructUsing(c => new Page(c.Id, c.Name, c.Alias, c.Content, c.Status));
         }
     }
 }

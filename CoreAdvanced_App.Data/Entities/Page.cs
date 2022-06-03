@@ -8,6 +8,18 @@ namespace CoreAdvanced_App.Data.Entities
     [Table("Pages")]
     public class Page : DomainEntity<int>
     {
+        public Page() { }
+
+        public Page(int id, string name, string alias,
+            string content, Status status)
+        {
+            Id = id;
+            Name = name;
+            Alias = alias;
+            Content = content;
+            Status = status;
+        }
+
         [Required]
         [MaxLength(256)]
         public string Name { set; get; }

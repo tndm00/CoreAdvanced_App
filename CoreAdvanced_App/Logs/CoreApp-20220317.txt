@@ -3,3 +3,4 @@
 2022-03-17T17:21:36.2560642+07:00  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
 2022-03-17T17:21:36.2561175+07:00  [INF] Hosting environment: "Development" (c3307c92)
 2022-03-17T17:21:36.2561449+07:00  [INF] Content root path: "D:\ThanhNhan\THANH NHAN\CORE_ASP.NET\CoreAdvanced_App\CoreAdvanced_App" (b5d60022)
+2022-03-17T17:25:45.3111941+07:00  [INF] Application is shutting down... (90f52c38)

@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CoreAdvanced_App.Data.EF.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20210928132039_RemoveFieldCustomerEmail")]
-    partial class RemoveFieldCustomerEmail
+    [Migration("20220326052754_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

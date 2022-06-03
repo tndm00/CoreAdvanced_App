@@ -219,13 +219,13 @@
             var fileUpload = $("#fileInputExcel").get(0);
             var files = fileUpload.files;
 
-            // Create FormData object  
+            // Create FormData object
             var fileData = new FormData();
-            // Looping over all files and add it to FormData object  
+            // Looping over all files and add it to FormData object
             for (var i = 0; i < files.length; i++) {
                 fileData.append("files", files[i]);
             }
-            // Adding one more key to FormData object  
+            // Adding one more key to FormData object
             fileData.append('categoryId', $('#ddlCategoryIdImportExcel').combotree('getValue'));
             $.ajax({
                 url: '/Admin/Product/ImportExcel',
@@ -376,7 +376,7 @@
                     render += Mustache.render(template, {
                         Id: item.Id,
                         Name: item.Name,
-                        Image: item.Image == null ? '<img src="/client-side/images/no-image.png" width=25/>' : '<img src="' + item.Image + '" width=25/>',
+                        Image: item.Image == null ? '<img src="/client-side/images/no-user.png" width=25 />' : '<img src="' + item.Image + '" width=25/>',
                         CategoryName: item.ProductCategory.Name,
                         Price: coreApp.formatNumber(item.Price, 0),
                         DateCreated: coreApp.dateTimeFormatJson(item.DateCreated),

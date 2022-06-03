@@ -12,6 +12,8 @@
 
         public const string CartSession = "CartSession";
 
+        public const string DefaultContactId = "default";
+
         public static class AppRole
         {
             public const string AdminRole = "Admin";

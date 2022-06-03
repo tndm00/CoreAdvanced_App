@@ -47,6 +47,7 @@ namespace CoreAdvanced_App.Application.AutoMapper
 
             CreateMap<Footer, FooterViewModel>().MaxDepth(2);
 
+            CreateMap<Page, PageViewModel>();
         }
     }
 }
