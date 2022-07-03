@@ -3,17 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30717.126
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoreAdvanced_App", "CoreAdvanced_App\CoreAdvanced_App.csproj", "{0355D471-DCE0-4EDC-8AC6-592D092B5EFB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoreAdvanced_App", "CoreAdvanced_App\CoreAdvanced_App.csproj", "{0355D471-DCE0-4EDC-8AC6-592D092B5EFB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoreAdvanced_App.Infrastructure", "CoreAdvanced_App.Infrastructure\CoreAdvanced_App.Infrastructure.csproj", "{21D53373-AD43-48AF-AC94-74921521B6B3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoreAdvanced_App.Infrastructure", "CoreAdvanced_App.Infrastructure\CoreAdvanced_App.Infrastructure.csproj", "{21D53373-AD43-48AF-AC94-74921521B6B3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoreAdvanced_App.Data", "CoreAdvanced_App.Data\CoreAdvanced_App.Data.csproj", "{1B164CCB-C195-4837-A1CD-4C3A0123FA94}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoreAdvanced_App.Data", "CoreAdvanced_App.Data\CoreAdvanced_App.Data.csproj", "{1B164CCB-C195-4837-A1CD-4C3A0123FA94}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoreAdvanced_App.Data.EF", "CoreAdvanced_App.Data.EF\CoreAdvanced_App.Data.EF.csproj", "{E158FED8-84C0-4D9A-84D0-7E4FDE8E01E9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoreAdvanced_App.Data.EF", "CoreAdvanced_App.Data.EF\CoreAdvanced_App.Data.EF.csproj", "{E158FED8-84C0-4D9A-84D0-7E4FDE8E01E9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoreAdvanced_App.Utilities", "CoreAdvanced_App.Utilities\CoreAdvanced_App.Utilities.csproj", "{846F929E-4558-44BB-B13F-445CC81CCEDA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoreAdvanced_App.Utilities", "CoreAdvanced_App.Utilities\CoreAdvanced_App.Utilities.csproj", "{846F929E-4558-44BB-B13F-445CC81CCEDA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoreAdvanced_App.Application", "CoreAdvanced_App.Application\CoreAdvanced_App.Application.csproj", "{FEFE027A-CD7C-41D4-B920-97B7427B8645}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoreAdvanced_App.Application", "CoreAdvanced_App.Application\CoreAdvanced_App.Application.csproj", "{FEFE027A-CD7C-41D4-B920-97B7427B8645}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 - Presentation", "1 - Presentation", "{82DFE37B-3AD3-485D-995D-AD18B252C6AD}"
 EndProject
@@ -22,6 +22,8 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3 - Domain", "3 - Domain", "{78608D48-04A0-42C9-9379-5713BBD6FF6C}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4 - Infrastructure", "4 - Infrastructure", "{2E28DC64-7B35-4008-ACDE-14BB69829686}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoreAdvanced_App.WebAPI", "CoreAdvanced_App.WebAPI\CoreAdvanced_App.WebAPI.csproj", "{13A522EC-0DE3-43CE-BC2E-82182DCEAEF1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -53,6 +55,10 @@ Global
 		{FEFE027A-CD7C-41D4-B920-97B7427B8645}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FEFE027A-CD7C-41D4-B920-97B7427B8645}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FEFE027A-CD7C-41D4-B920-97B7427B8645}.Release|Any CPU.Build.0 = Release|Any CPU
+		{13A522EC-0DE3-43CE-BC2E-82182DCEAEF1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{13A522EC-0DE3-43CE-BC2E-82182DCEAEF1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{13A522EC-0DE3-43CE-BC2E-82182DCEAEF1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{13A522EC-0DE3-43CE-BC2E-82182DCEAEF1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -64,6 +70,7 @@ Global
 		{E158FED8-84C0-4D9A-84D0-7E4FDE8E01E9} = {78608D48-04A0-42C9-9379-5713BBD6FF6C}
 		{846F929E-4558-44BB-B13F-445CC81CCEDA} = {2E28DC64-7B35-4008-ACDE-14BB69829686}
 		{FEFE027A-CD7C-41D4-B920-97B7427B8645} = {CEAA8240-C6DE-4D97-BD38-9425E9147A49}
+		{13A522EC-0DE3-43CE-BC2E-82182DCEAEF1} = {82DFE37B-3AD3-485D-995D-AD18B252C6AD}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {BDE71569-6EA4-4514-86D4-9B5ACD299CF0}

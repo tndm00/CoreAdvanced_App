@@ -11,7 +11,6 @@ using CoreAdvanced_App.Extensions;
 using CoreAdvanced_App.Helper;
 using CoreAdvanced_App.Infrastructure.Interfaces;
 using CoreAdvanced_App.Services;
-using CoreAdvanced_App.Utilities.Constants;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
